@@ -17,4 +17,3 @@ Resources:
               SSEAlgorithm: AES256
       VersioningConfiguration:
         Status: Enabled
-        MFADelete: Disabled
