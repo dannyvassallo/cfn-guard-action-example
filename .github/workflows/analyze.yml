@@ -14,7 +14,7 @@ jobs:
       - name: CloudFormation Guard analyze
         uses: aws-cloudformation/cloudformation-guard@action-v0.0.1
         with:
-          rules: './resources/validate/rules'
-          data: './resources/validate/data'
+          rules: 'resources/validate/rules'
+          data: 'resources/validate/data'
           analyze: true
           token: ${{ secrets.GITHUB_TOKEN }}
