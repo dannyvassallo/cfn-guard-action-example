@@ -5,6 +5,7 @@ on:
 
 jobs:
   guard:
+    permissions: write-all
     runs-on: ubuntu-latest
     name: CloudFormation Guard validate
     steps:
