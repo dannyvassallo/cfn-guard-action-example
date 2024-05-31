@@ -17,7 +17,7 @@ jobs:
     name: CloudFormation Guard analyze
     steps:
       - name: CloudFormation Guard analyze
-        uses: dannyvassallo/cloudformation-guard@action-v0.0.17
+        uses: dannyvassallo/cloudformation-guard@action-v0.0.18
         with:
           rules: 'resources/validate/rules'
           data: 'resources/validate/data'
