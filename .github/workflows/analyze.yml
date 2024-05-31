@@ -8,16 +8,12 @@ on:
 jobs:
   guard:
     permissions:
-      # required for all workflows
       security-events: write
-      # only required for workflows in private repositories
-      actions: read
-      contents: read
     runs-on: ubuntu-latest
     name: CloudFormation Guard analyze
     steps:
       - name: CloudFormation Guard analyze
-        uses: dannyvassallo/cloudformation-guard@action-v0.0.28
+        uses: dannyvassallo/cloudformation-guard@action-v0.0.41
         with:
           rules: 'resources/validate/rules'
           data: 'resources/validate/data'
