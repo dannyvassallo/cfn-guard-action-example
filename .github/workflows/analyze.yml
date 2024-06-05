@@ -7,14 +7,14 @@ on:
 
 jobs:
   guard:
-    permissions: write-all
+    permissions:
+      security-events: write
     runs-on: ubuntu-latest
     name: CloudFormation Guard analyze
     steps:
       - name: CloudFormation Guard analyze
-        uses: aws-cloudformation/cloudformation-guard@action-v0.0.1
+        uses: aws-cloudformation/cloudformation-guard@action-v0.0.2
         with:
           rules: 'resources/validate/rules'
           data: 'resources/validate/data'
           analyze: true
-          token: ${{ secrets.GITHUB_TOKEN }}
