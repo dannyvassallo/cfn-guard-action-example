@@ -1,20 +1,20 @@
 name: CloudFormation Guard Analysis
 
 on:
-  push:
   # schedule:
-  #   - cron: '*/1 * * * *'
+  #   - cron: '*/15 * * * *'
+  push:
 
 jobs:
   guard:
-    permissions: write-all
+    permissions:
+      security-events: write
     runs-on: ubuntu-latest
-    name: CloudFormation Guard analyze
+    name: CloudFormation Guard Analyze
     steps:
-      - name: CloudFormation Guard analyze
-        uses: aws-cloudformation/cloudformation-guard@action-v0.0.1
+      - name: CloudFormation Guard Analyze
+        uses: dannyvassallo/cloudformation-guard@action-v0.0.99
         with:
           rules: 'resources/validate/rules'
           data: 'resources/validate/data'
           analyze: true
-          token: ${{ secrets.GITHUB_TOKEN }}
