@@ -1,0 +1,15 @@
+Resources:
+  MyELB:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Scheme: internet-facing
+      SecurityGroups:
+        - sg-12345678
+      Subnets:
+        - subnet-abcd1234
+        - subnet-efgh5678
+      LoadBalancerAttributes:
+        AccessLog:
+          Enabled: true
+          S3BucketName: my-elb-logs
+          S3BucketPrefix: elb-logs
