@@ -1,0 +1,30 @@
+#####################################
+Gherkin
+#####################################
+Rule Identifier: ELB_LOGGING_ENABLED
+Description: Checks whether logging is enabled for your Elastic Load Balancing resources.
+Reports on: AWS::ElasticLoadBalancingV2::LoadBalancer
+Evaluates: AWS CloudFormation
+Rule Parameters: NA
+Scenarios:
+a) SKIP: when there are no ELB resources present
+b) PASS: when all ELB resources have Logging Configuration set
+c) FAIL: when all ELB resources have Logging Configuration not set
+d) SKIP: when metadata includes the suppression for rule ELB_LOGGING_ENABLED
+
+Select all ELB resources from incoming template (payload)
+let elb_resources = Resources.*[ Type == 'AWS::ElasticLoadBalancingV2::LoadBalancer'
+    Metadata.guard.SuppressedRules not exists or
+    Metadata.guard.SuppressedRules.* != "ELB_LOGGING_ENABLED"
+]
+
+rule elb_logging_enabled when %elb_resources !empty {
+    %elb_resources.Properties.LoadBalancerAttributes exists
+    %elb_resources.Properties.LoadBalancerAttributes.AccessLog.Enabled == true
+
+    <<
+    ```null
+    Violation: ELB Logging needs to be configured to enable logging.
+    Fix: Set the ELB property LoadBalancerAttributes.AccessLog.Enabled to true.
+    ```
+}

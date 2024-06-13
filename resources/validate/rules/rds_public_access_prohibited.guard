@@ -1,0 +1,29 @@
+#####################################
+Gherkin
+#####################################
+Rule Identifier: RDS_PUBLIC_ACCESS_PROHIBITED
+Description: Checks whether public access is prohibited for your RDS instances.
+Reports on: AWS::RDS::DBInstance
+Evaluates: AWS CloudFormation
+Rule Parameters: NA
+Scenarios:
+a) SKIP: when there are no RDS resources present
+b) PASS: when all RDS resources have public access prohibited
+c) FAIL: when all RDS resources have public access allowed
+d) SKIP: when metadata includes the suppression for rule RDS_PUBLIC_ACCESS_PROHIBITED
+
+Select all RDS resources from incoming template (payload)
+let rds_instances = Resources.*[ Type == 'AWS::RDS::DBInstance'
+    Metadata.guard.SuppressedRules not exists or
+    Metadata.guard.SuppressedRules.* != "RDS_PUBLIC_ACCESS_PROHIBITED"
+]
+
+rule rds_public_access_prohibited when %rds_instances !empty {
+    %rds_instances.Properties.PubliclyAccessible == false
+
+    <<
+    ```null
+    Violation: RDS Instance Public Access needs to be prohibited.
+    Fix: Set the RDS Instance property PubliclyAccessible to false.
+    ```
+}
