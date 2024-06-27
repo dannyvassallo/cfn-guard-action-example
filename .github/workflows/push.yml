@@ -12,7 +12,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
       - name: CloudFormation Guard validate
-        uses: aws-cloudformation/cloudformation-guard@action-v0.0.1
+        uses: aws-cloudformation/cloudformation-guard@action-v0.0.3
         with:
           checkout: false
           rules: 'resources/validate/rules'
