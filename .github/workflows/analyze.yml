@@ -18,3 +18,4 @@ jobs:
           rules: 'resources/validate/rules'
           data: 'resources/validate/data'
           analyze: true
+          debug: true
