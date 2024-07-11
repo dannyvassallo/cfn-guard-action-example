@@ -13,7 +13,7 @@ jobs:
     name: CloudFormation Guard Analyze
     steps:
       - name: CloudFormation Guard Analyze
-        uses: dannyvassallo/cloudformation-guard@action-test-v24
+        uses: dannyvassallo/cloudformation-guard@action-test-v25
         with:
           rules: 'resources/validate/rules'
           data: 'resources/validate/data'
