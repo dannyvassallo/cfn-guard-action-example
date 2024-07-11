@@ -10,7 +10,7 @@ jobs:
     name: CloudFormation Guard validate
     steps:
       - name: CloudFormation Guard validate
-        uses: dannyvassallo/cloudformation-guard@action-test-v22
+        uses: dannyvassallo/cloudformation-guard@action-test-v23
         with:
           rules: 'resources/validate/rules'
           data: 'resources/validate/data'
