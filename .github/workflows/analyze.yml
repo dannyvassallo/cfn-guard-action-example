@@ -9,12 +9,13 @@ jobs:
   guard:
     permissions:
       security-events: write
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     name: CloudFormation Guard Analyze
     steps:
       - name: CloudFormation Guard Analyze
-        uses: dannyvassallo/cloudformation-guard@action-v0.0.105
+        uses: aws-cloudformation/cloudformation-guard@action-v0.0.5
         with:
           rules: 'resources/validate/rules'
           data: 'resources/validate/data'
           analyze: true
+          debug: true

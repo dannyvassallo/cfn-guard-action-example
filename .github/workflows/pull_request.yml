@@ -6,11 +6,14 @@ on:
 jobs:
   guard:
     runs-on: ubuntu-latest
-    permissions: write-all
+    permissions:
+      pull-requests: write
+      contents: write
     name: CloudFormation Guard validate
     steps:
       - name: CloudFormation Guard validate
-        uses: aws-cloudformation/cloudformation-guard@action-v0.0.3
+        uses: aws-cloudformation/cloudformation-guard@action-v0.0.5
         with:
-          rules: 'resources/validate/rules'
-          data: 'resources/validate/data'
+          rules: './resources/validate/rules/advanced_regex_negative_lookbehind_rule.guard'
+          data: './resources/validate/data/advanced_regex_negative_lookbehind_non_compliant.yaml'
+          debug: true

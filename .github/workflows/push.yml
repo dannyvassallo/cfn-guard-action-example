@@ -10,7 +10,8 @@ jobs:
     name: CloudFormation Guard validate
     steps:
       - name: CloudFormation Guard validate
-        uses: aws-cloudformation/cloudformation-guard@action-v0.0.1
+        uses: aws-cloudformation/cloudformation-guard@action-v0.0.5
         with:
           rules: 'resources/validate/rules'
           data: 'resources/validate/data'
+          debug: true
