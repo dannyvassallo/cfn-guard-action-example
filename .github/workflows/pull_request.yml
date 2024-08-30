@@ -14,6 +14,6 @@ jobs:
       - name: CloudFormation Guard validate
         uses: dannyvassallo/cloudformation-guard@action-v0.0.5
         with:
-          rules: 'resources/validate/rules/advanced_regex_negative_lookbehind_rule.guard'
-          data: 'resources/validate/data/advanced_regex_negative_lookbehind_non_compliant.yaml'
+          rules: './resources/validate/rules/advanced_regex_negative_lookbehind_rule.guard'
+          data: './resources/validate/data/advanced_regex_negative_lookbehind_non_compliant.yaml'
           debug: true
